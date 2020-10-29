@@ -1,0 +1,395 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="decisioncredito_decisions" xmlns:included1="decisioncredito_functions" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="_4E7086C2-BB73-413F-85A4-045CB86FF39C" name="CalculoTopePorSegmentoCliente" expressionLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="decisioncredito_decisions">
+  <dmn:extensionElements/>
+  <dmn:import id="_DD263BF4-C226-498D-B0D2-AEC4B7E78964" name="TopeCategoriaRiesgoFunction" namespace="decisioncredito_functions" locationURI="TopeCategoriaRiesgoFunction.dmn" importType="http://www.omg.org/spec/DMN/20180521/MODEL/"/>
+  <dmn:inputData id="_230C9B42-6318-47A7-AF19-5CAC3FD346BC" name="Tiene buro">
+    <dmn:extensionElements/>
+    <dmn:variable id="_C4971B25-4D6B-431D-A63F-AE621AF065AF" name="Tiene buro" typeRef="boolean"/>
+  </dmn:inputData>
+  <dmn:inputData id="_6DF0860F-9CD1-4376-8755-A7BFAA8F442E" name="Es activo o pasivo">
+    <dmn:extensionElements/>
+    <dmn:variable id="_3D0233BB-5538-4560-827B-EA7D3D08BF9F" name="Es activo o pasivo" typeRef="string"/>
+  </dmn:inputData>
+  <dmn:inputData id="_BC4267C0-BA58-4CF1-B26F-146DC93B8637" name="Categoria">
+    <dmn:extensionElements/>
+    <dmn:variable id="_444CA7F5-71A5-4EF8-ABC9-0A5865E0FA5C" name="Categoria" typeRef="string"/>
+  </dmn:inputData>
+  <dmn:inputData id="_9275E950-620C-497B-B498-B3C39585AB83" name="Tiene ACT SF">
+    <dmn:extensionElements/>
+    <dmn:variable id="_E4F93DFF-EC82-4632-87E0-8D336B4043F3" name="Tiene ACT SF" typeRef="boolean"/>
+  </dmn:inputData>
+  <dmn:decision id="_06BAD6B1-E3EA-413C-A881-06666019960B" name="Tope por segmento">
+    <dmn:extensionElements/>
+    <dmn:variable id="_98C3EF41-59BE-4FAA-BF7E-5FA623D00BE7" name="Tope por segmento" typeRef="number"/>
+    <dmn:informationRequirement id="_214CCF6A-07E4-41D3-AE71-09C44C324A5A">
+      <dmn:requiredInput href="#_BC4267C0-BA58-4CF1-B26F-146DC93B8637"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_AF489DC4-6147-4B3A-9C6B-7160C0D43FB8">
+      <dmn:requiredInput href="#_6DF0860F-9CD1-4376-8755-A7BFAA8F442E"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_FD701484-BAAE-4B04-AC8B-EB2A9078159F">
+      <dmn:requiredInput href="#_230C9B42-6318-47A7-AF19-5CAC3FD346BC"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_11AE38B2-0D15-4FC1-945B-EB211874EC21">
+      <dmn:requiredInput href="#_9275E950-620C-497B-B498-B3C39585AB83"/>
+    </dmn:informationRequirement>
+    <dmn:knowledgeRequirement id="_ACB4A622-4A83-452D-8AB4-7D87457A63CF">
+      <dmn:requiredKnowledge href="decisioncredito_functions#_C6E6559A-FA16-4702-96EA-6E07149EF45A"/>
+    </dmn:knowledgeRequirement>
+    <dmn:decisionTable id="_1F5DE9D4-40F9-4D29-9A23-ADA0D44E556F" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row">
+      <dmn:input id="_8F3E9988-1D5F-45B5-AA35-D3C95671F39E">
+        <dmn:inputExpression id="_A1DB869D-35CD-4917-966E-0E00961CCC2D" typeRef="string">
+          <dmn:text>Es activo o pasivo</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_A7683004-6F24-45A5-8BE3-8292142C3A8D">
+        <dmn:inputExpression id="_C137BC1A-3DF5-45EF-BE94-5C755F5306C2" typeRef="boolean">
+          <dmn:text>Tiene buro</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_A8D86A28-2199-4A41-996E-65701AF19E7C">
+        <dmn:inputExpression id="_02FE91E7-3A33-4F70-AF57-66FF73FC1648" typeRef="boolean">
+          <dmn:text>Tiene ACT SF</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_0C9B7E83-E5BB-4BE4-AD68-7291631DAADD">
+        <dmn:inputExpression id="_FF76792F-556A-4B66-AD3B-7A75D37CD189" typeRef="string">
+          <dmn:text>Categoria</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:output id="_8A9A3213-7D02-4869-99B2-377A4F55CAB1"/>
+      <dmn:annotation name="annotation-1"/>
+      <dmn:rule id="_B2BCAAE5-ED62-449C-895F-E86B87E36BF5">
+        <dmn:inputEntry id="_BB2C7448-3F51-48CA-A5D4-C8FB478CEA27">
+          <dmn:text>"ACTIVO"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_43910B25-04D6-4F01-BD9F-23E0A6664AF9">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_2D1FE7CE-E7E1-4636-9A1A-81E294B638FD">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_49D6E36B-9A1D-47BF-932C-C54C83BBE0FF">
+          <dmn:text>"VIP"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_FD697ACA-6C03-4C98-B04D-90DC8DA254EF">
+          <dmn:text>TopeCategoriaRiesgoFunction.TopeCategoriaRiesgoFunction(Categoria, Tiene ACT SF)</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_7E2AE5B6-F4A8-4C8D-9602-98C0CD0DBF02">
+        <dmn:inputEntry id="_085E5B97-22E1-4C10-B06F-CE7C8237F0E7">
+          <dmn:text>"ACTIVO"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_13001F28-C8D3-489C-B17B-52E5FB06B32C">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_FC59A0DB-32DB-4E21-93C6-161185C113D8">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_09086B26-F8E4-4B5D-A17C-4E6A75E4A97A">
+          <dmn:text>"PREMIUM"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_E166DEF6-5E3B-41D7-A7E9-FD392DD466A6">
+          <dmn:text>TopeCategoriaRiesgoFunction.TopeCategoriaRiesgoFunction(Categoria, Tiene ACT SF)</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_0DC2C618-84C1-45D8-A174-B4A6AE87345D">
+        <dmn:inputEntry id="_D8BE6ECD-C404-4290-B4D4-6898B90885FE">
+          <dmn:text>"ACTIVO"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_803B8651-9DE8-4E3C-B15E-FAE8FCD4CD65">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_2A3E7F27-75BC-4058-8BE2-3A08BD4FF6EE">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_7A1CB4D9-6460-4062-BB31-A54EB858639C">
+          <dmn:text>"Otros"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_53BEB46E-638D-4AFE-98DC-F78DB732201C">
+          <dmn:text>TopeCategoriaRiesgoFunction.TopeCategoriaRiesgoFunction(Categoria, Tiene ACT SF)</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_6E50A0FA-2542-47B7-812E-ABB2643B9A35">
+        <dmn:inputEntry id="_34711708-0953-47AD-AD87-E879CA76F846">
+          <dmn:text>"ACTIVO"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_22846E3E-DA22-440A-A80A-2E2E71C653AD">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_47A77960-835F-4C70-9456-99B71D2F2F08">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_44411A81-1737-4424-8914-34B85E222984">
+          <dmn:text>"VIP"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_C8538E90-9E54-4036-BF29-2943DA44BA08">
+          <dmn:text>TopeCategoriaRiesgoFunction.TopeCategoriaRiesgoFunction(Categoria, Tiene ACT SF)</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_F068904F-30C2-4619-9E5C-0031BCF83880">
+        <dmn:inputEntry id="_DBBD26EF-BB0A-4AE6-BFEA-180B0250131A">
+          <dmn:text>"ACTIVO"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_CAB40196-25B5-4405-B105-D39033CFF395">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_CFE86FC7-5A7C-44FA-AAC8-1B0CAC49DFE7">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_7610A235-48AB-4B13-A04A-EABFA26AA816">
+          <dmn:text>"PREMIUM"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_E3C4E81A-46DF-4C9E-AC6E-4454F615A915">
+          <dmn:text>TopeCategoriaRiesgoFunction.TopeCategoriaRiesgoFunction(Categoria, Tiene ACT SF)</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_622560B9-D5C1-458B-9E36-E1A5FD1ECB56">
+        <dmn:inputEntry id="_61C57FE9-6C8B-4C57-B630-608111E67A5B">
+          <dmn:text>"ACTIVO"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_3F1E4BAA-AE74-4D85-9174-A6B0C95830DA">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_3ADA32F6-39DE-4DF2-80A6-2884C5075FF1">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_11176D18-3BC1-495C-B780-6DD28AC3E737">
+          <dmn:text>"Otros"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_A08B0A74-5645-46C2-8F07-482612FD36D8">
+          <dmn:text>TopeCategoriaRiesgoFunction.TopeCategoriaRiesgoFunction(Categoria, Tiene ACT SF)</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_6FA74FD0-6B1A-428D-A721-70C9C65B4AE2">
+        <dmn:inputEntry id="_D89B68CB-8402-4C10-BA50-66096798382D">
+          <dmn:text>"ACTIVO"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_99403A0D-44B4-4314-B449-7A8D357A3F78">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_47A15B5E-0916-4F96-A8A7-EDC512015638">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_F47C779F-EA02-4B89-83BA-CFCAA3B5097F">
+          <dmn:text>"VIP"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_D489A368-6896-4C50-BA7A-CE364E39FE97">
+          <dmn:text>TopeCategoriaRiesgoFunction.TopeCategoriaRiesgoFunction(Categoria, Tiene ACT SF)</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_88E892BC-0A11-4D45-8DF6-A20828F53E65">
+        <dmn:inputEntry id="_C8EE0FF7-953D-4560-A5C3-3753EC96519B">
+          <dmn:text>"ACTIVO"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_AF46EEC1-BB56-47CF-B5D9-4C4679BC7D12">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_C66C86D3-5084-4912-B6E7-31164B654AB1">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_82A354CA-06B4-4BE0-9F21-80F80DA2D26C">
+          <dmn:text>"PREMIUM"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_8B9ACDD8-13E0-4070-8F84-AB5AF669C15A">
+          <dmn:text>TopeCategoriaRiesgoFunction.TopeCategoriaRiesgoFunction(Categoria, Tiene ACT SF)</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_E36B8811-6552-4472-8D66-68533C67BBA6">
+        <dmn:inputEntry id="_CC3B5BA2-7869-4B7E-BBF3-0EAF78D811BA">
+          <dmn:text>"ACTIVO"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_45A03A56-6AA1-4C5B-B696-40128F6E586F">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_962209CA-8F1B-486F-BBB7-4A69FF88BE53">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_A55A9FFD-728A-44B9-80AF-9B5E4E4B4CFD">
+          <dmn:text>"Otros"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_2C135EBF-1A3A-4F76-9504-07AD4E5C2F7E">
+          <dmn:text>TopeCategoriaRiesgoFunction.TopeCategoriaRiesgoFunction(Categoria, Tiene ACT SF)</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_2185ED39-4290-448B-B3BA-14B1D2E349A3">
+        <dmn:inputEntry id="_E3E8CD40-08F4-448F-9273-3A49D2DF8113">
+          <dmn:text>"ACTIVO"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_092BFC26-82FF-4895-BDA5-0FD868A23671">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_200869DC-59D4-4D4F-87C4-7745053CDD9F">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_D2422AA4-CE55-47DE-BB4C-13E9A73EBD18">
+          <dmn:text>"VIP"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_E6D3FC5A-AC55-488B-8378-811589D62269">
+          <dmn:text>TopeCategoriaRiesgoFunction.TopeCategoriaRiesgoFunction(Categoria, Tiene ACT SF)</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_5DFEAAAA-E8DF-49B3-934A-CCFECAEA92D3">
+        <dmn:inputEntry id="_1246F060-0ED8-454B-9A68-520F3E469438">
+          <dmn:text>"ACTIVO"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_ED6E27B7-61EB-4E2E-AB3E-6945790433DD">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_19A96657-B9EA-4DAD-A5DA-32DB53943A4A">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_B500E205-EDFF-4B7C-9F45-7E53459CDA11">
+          <dmn:text>"PREMIUM"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_66E9A9C7-D217-4628-BAC2-AA089AB13B12">
+          <dmn:text>TopeCategoriaRiesgoFunction.TopeCategoriaRiesgoFunction(Categoria, Tiene ACT SF)</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_322E5C50-86FD-4D6B-BE5C-EC5505A340E4">
+        <dmn:inputEntry id="_95D37448-5A1B-46EC-A438-1B2014FEB3A3">
+          <dmn:text>"ACTIVO"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_F1F11BBF-A663-4E32-949A-48FAB9E4A9C8">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_9CDE5F2A-B452-4218-B39E-F924137F4C96">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_3836F0A1-E8FF-42D3-AA5E-32BEAD49206B">
+          <dmn:text>"Otros"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_BE8A584C-63F3-4F6C-975A-7AAB3514E450">
+          <dmn:text>TopeCategoriaRiesgoFunction.TopeCategoriaRiesgoFunction(Categoria, Tiene ACT SF)</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+    </dmn:decisionTable>
+  </dmn:decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <di:extension>
+        <kie:ComponentsWidthsExtension>
+          <kie:ComponentWidths dmnElementRef="_1F5DE9D4-40F9-4D29-9A23-ADA0D44E556F">
+            <kie:width>50.0</kie:width>
+            <kie:width>150.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>100.0</kie:width>
+            <kie:width>659.0</kie:width>
+            <kie:width>149.0</kie:width>
+          </kie:ComponentWidths>
+        </kie:ComponentsWidthsExtension>
+      </di:extension>
+      <dmndi:DMNShape id="dmnshape-_230C9B42-6318-47A7-AF19-5CAC3FD346BC" dmnElementRef="_230C9B42-6318-47A7-AF19-5CAC3FD346BC" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="231.29906542056074" y="308" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_6DF0860F-9CD1-4376-8755-A7BFAA8F442E" dmnElementRef="_6DF0860F-9CD1-4376-8755-A7BFAA8F442E" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="104" y="308" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_BC4267C0-BA58-4CF1-B26F-146DC93B8637" dmnElementRef="_BC4267C0-BA58-4CF1-B26F-146DC93B8637" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="487" y="313" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_C6E6559A-FA16-4702-96EA-6E07149EF45A" dmnElementRef="included1:_C6E6559A-FA16-4702-96EA-6E07149EF45A" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="554" y="131" width="385" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_9275E950-620C-497B-B498-B3C39585AB83" dmnElementRef="_9275E950-620C-497B-B498-B3C39585AB83" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="359.29906542056074" y="308" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_06BAD6B1-E3EA-413C-A881-06666019960B" dmnElementRef="_06BAD6B1-E3EA-413C-A881-06666019960B" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="223" y="110" width="204" height="82"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="dmnedge-_214CCF6A-07E4-41D3-AE71-09C44C324A5A" dmnElementRef="_214CCF6A-07E4-41D3-AE71-09C44C324A5A">
+        <di:waypoint x="537" y="338"/>
+        <di:waypoint x="325" y="151"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_AF489DC4-6147-4B3A-9C6B-7160C0D43FB8" dmnElementRef="_AF489DC4-6147-4B3A-9C6B-7160C0D43FB8">
+        <di:waypoint x="154" y="333"/>
+        <di:waypoint x="325" y="192"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_FD701484-BAAE-4B04-AC8B-EB2A9078159F" dmnElementRef="_FD701484-BAAE-4B04-AC8B-EB2A9078159F">
+        <di:waypoint x="281.29906542056074" y="333"/>
+        <di:waypoint x="325" y="192"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_11AE38B2-0D15-4FC1-945B-EB211874EC21" dmnElementRef="_11AE38B2-0D15-4FC1-945B-EB211874EC21">
+        <di:waypoint x="409.29906542056074" y="333"/>
+        <di:waypoint x="325" y="192"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_ACB4A622-4A83-452D-8AB4-7D87457A63CF" dmnElementRef="_ACB4A622-4A83-452D-8AB4-7D87457A63CF">
+        <di:waypoint x="746.5" y="156"/>
+        <di:waypoint x="427" y="151"/>
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</dmn:definitions>
