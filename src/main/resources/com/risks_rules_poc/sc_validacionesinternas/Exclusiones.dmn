@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="screeningclustering_decisions" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="_ADFEAF1C-02D6-44F4-B535-2EEC2066D592" name="Exclusiones" expressionLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="screeningclustering_decisions">
+  <dmn:extensionElements/>
+  <dmn:inputData id="_29466B1A-9025-4172-B395-7D9E37BD05CE" name="Antiguedad Cliente">
+    <dmn:extensionElements/>
+    <dmn:variable id="_21C7B56A-5DF9-4D4C-88AA-4DD3D3CED1F5" name="Antiguedad Cliente" typeRef="boolean"/>
+  </dmn:inputData>
+  <dmn:decision id="_D26A0F57-19A2-4F31-9B65-7B7FAD207650" name="Cliente Excluido">
+    <dmn:extensionElements/>
+    <dmn:variable id="_7DF1EF76-9EED-4C13-BFC1-0CD6CF469928" name="Cliente Excluido" typeRef="boolean"/>
+    <dmn:informationRequirement id="_110B1F38-05AE-448F-9BFA-0054271667D2">
+      <dmn:requiredInput href="#_29466B1A-9025-4172-B395-7D9E37BD05CE"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_9A120C7C-61E0-4B0C-9C40-9AD55B702441">
+      <dmn:requiredInput href="#_5D033EE9-28B5-4F3F-AFA7-7545C18B36D5"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_8938E497-1094-4879-B5D4-BEBA2F9DF138">
+      <dmn:text>if Antiguedad Cliente &lt; 6 or Cliente Inactivo = true
+then
+    true
+else
+    false
+    
+    </dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmn:inputData id="_5D033EE9-28B5-4F3F-AFA7-7545C18B36D5" name="Cliente Inactivo">
+    <dmn:extensionElements/>
+    <dmn:variable id="_09D9DF45-069B-4F8B-A4C9-D8A41EE5F6B7" name="Cliente Inactivo" typeRef="boolean"/>
+  </dmn:inputData>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <di:extension>
+        <kie:ComponentsWidthsExtension>
+          <kie:ComponentWidths dmnElementRef="_8938E497-1094-4879-B5D4-BEBA2F9DF138">
+            <kie:width>465.0</kie:width>
+          </kie:ComponentWidths>
+        </kie:ComponentsWidthsExtension>
+      </di:extension>
+      <dmndi:DMNShape id="dmnshape-_29466B1A-9025-4172-B395-7D9E37BD05CE" dmnElementRef="_29466B1A-9025-4172-B395-7D9E37BD05CE" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="332" y="354" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_D26A0F57-19A2-4F31-9B65-7B7FAD207650" dmnElementRef="_D26A0F57-19A2-4F31-9B65-7B7FAD207650" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="378.5" y="186" width="155" height="68"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_5D033EE9-28B5-4F3F-AFA7-7545C18B36D5" dmnElementRef="_5D033EE9-28B5-4F3F-AFA7-7545C18B36D5" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="478" y="354" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="dmnedge-_110B1F38-05AE-448F-9BFA-0054271667D2" dmnElementRef="_110B1F38-05AE-448F-9BFA-0054271667D2">
+        <di:waypoint x="382" y="379"/>
+        <di:waypoint x="456" y="254"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_9A120C7C-61E0-4B0C-9C40-9AD55B702441" dmnElementRef="_9A120C7C-61E0-4B0C-9C40-9AD55B702441">
+        <di:waypoint x="528" y="379"/>
+        <di:waypoint x="456" y="254"/>
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</dmn:definitions>
