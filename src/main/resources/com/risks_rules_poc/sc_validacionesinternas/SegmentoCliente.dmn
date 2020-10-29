@@ -1,0 +1,229 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="screeningclustering_decisions" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="_91EDF7FF-23B4-4CD9-B7AC-BC3AED6C29AC" name="SegmentoCliente" expressionLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="screeningclustering_decisions">
+  <dmn:extensionElements/>
+  <dmn:inputData id="_0E807FD2-1F95-4B0E-9C60-F55E1A5ECDFA" name="Pago haberes 2 meses">
+    <dmn:extensionElements/>
+    <dmn:variable id="_666CE3F8-2C28-4262-AFB4-9129A3DC04F3" name="Pago haberes 2 meses" typeRef="number"/>
+  </dmn:inputData>
+  <dmn:inputData id="_6496B8CA-314F-46FF-9BBF-3BEF2F8D6593" name="Pago haberes meses 3 a 6">
+    <dmn:extensionElements/>
+    <dmn:variable id="_EC57D435-8FC2-463E-8417-0B31D77A8A6B" name="Pago haberes meses 3 a 6" typeRef="number"/>
+  </dmn:inputData>
+  <dmn:decision id="_B54D2669-AA14-4877-8263-A27539EB467B" name="Segmento Cliente">
+    <dmn:extensionElements/>
+    <dmn:allowedAnswers>"NPH","ACT","PAS","SPH","Otros"</dmn:allowedAnswers>
+    <dmn:variable id="_6DE52E01-5219-4B6D-8EC0-63A84B6B613F" name="Segmento Cliente" typeRef="string"/>
+    <dmn:informationRequirement id="_A6B7C4C8-119E-44A9-A1DB-68FAC99D230D">
+      <dmn:requiredInput href="#_0E807FD2-1F95-4B0E-9C60-F55E1A5ECDFA"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_F87363F6-F49C-4CF8-A551-2EE490DD5619">
+      <dmn:requiredInput href="#_6496B8CA-314F-46FF-9BBF-3BEF2F8D6593"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_2C29BCF5-7E86-45E1-8386-F2DDBEC5A07F">
+      <dmn:requiredDecision href="#_615A3578-74B0-4C6F-8856-9C49FBA72D00"/>
+    </dmn:informationRequirement>
+    <dmn:decisionTable id="_80474F6E-4EC0-453B-8DBA-22E0D2D64FF3" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row">
+      <dmn:input id="_59EC3608-2F8E-47E2-9DBD-D5713AE7E9FC">
+        <dmn:inputExpression id="_858C5F22-7836-4EB5-93C0-4AD800353467" typeRef="number">
+          <dmn:text>Pago haberes meses 3 a 6</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_BD6FD634-DE1D-4D03-AE0B-BCB7175BABA2">
+        <dmn:inputExpression id="_90629C32-90D5-4CAE-8C2E-31A41980E085" typeRef="number">
+          <dmn:text>Pago haberes 2 meses</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_8428D88D-AD85-4B50-AB57-39A0EF178956">
+        <dmn:inputExpression id="_FF36EAFE-D277-4967-844F-ECD82D03F27C" typeRef="string">
+          <dmn:text>Cliente activo o pasivo</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:output id="_1BE89B16-2E28-4681-9049-C9A965B0344B"/>
+      <dmn:annotation name="Descripcion"/>
+      <dmn:rule id="_66328BE2-F07F-4CEE-9053-57A089A9ABD8">
+        <dmn:inputEntry id="_A3802E05-FC43-474C-96EC-64824B92230C">
+          <dmn:text>&gt;0</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_07D4B3E6-2055-45CD-95A0-F1CEC16E5ADB">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_2CBFDC53-EBC3-4023-B52C-F1B94AB8E3B5">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_F72B34BE-F627-4B51-BF06-73690EAAA154">
+          <dmn:text>"SPH"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_DE2F88F9-9A88-4701-A5DD-1E5B55D862A3">
+        <dmn:inputEntry id="_B3E166B0-2448-4F86-A53C-7DE9E2B0C339">
+          <dmn:text>0</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_8944FDF3-1A21-437E-97D1-7D59CC635F91">
+          <dmn:text>&gt;0</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_A9C146C6-A5D3-4946-8594-EAA3B188DA65">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_42D30801-B43C-4021-AB0F-2AF9C78DA35F">
+          <dmn:text>"NPH"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_006D98C3-0CEC-4078-B7AE-6E8CA594BB16">
+        <dmn:inputEntry id="_28EDFC9E-DC6C-47A1-82A4-15F35A80315A">
+          <dmn:text>0</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_7A9FF3E9-C2C0-477A-B9B2-7F5AD3CED35E">
+          <dmn:text>0</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_381DB97A-600D-4A84-9DB6-E8997014E8CD">
+          <dmn:text>"ACTIVO"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_6F6F596D-4A29-42D9-993E-6FC21C11E89E">
+          <dmn:text>"ACT"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_FDDC57FC-B950-4D7A-B813-0656783B2541">
+        <dmn:inputEntry id="_6EC6C2B1-B72D-49ED-A9F4-BE2C91C4A7B5">
+          <dmn:text>0</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_58477625-04AF-4571-9637-0B4F49BD5CF9">
+          <dmn:text>0</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_4D839355-45BA-4AE1-B6B3-152A9CEFDFBA">
+          <dmn:text>"PASIVO"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_96A20D17-99F2-4B1A-A8EE-40F8E0863D65">
+          <dmn:text>"PAS"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_49C12B5C-C8C4-4312-A6C3-202F892CA6A7">
+        <dmn:inputEntry id="_3115A3F4-60EF-4804-B4BD-E8D29A2EBE32">
+          <dmn:text>0</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_B5AA39A0-9116-48E4-8B18-CBA6DC0BF68F">
+          <dmn:text>0</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_266EB876-E13B-4052-A387-D080E5DAE782">
+          <dmn:text>null</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_5057423C-6360-4E35-84BB-A1F3E7F6C366">
+          <dmn:text>"Otros"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text></dmn:text>
+        </dmn:annotationEntry>
+      </dmn:rule>
+    </dmn:decisionTable>
+  </dmn:decision>
+  <dmn:inputData id="_6F3C74CD-FD17-41A6-95C5-0FF90B59E581" name="Suma salario medio 6 meses">
+    <dmn:extensionElements/>
+    <dmn:variable id="_944C2539-0485-4ABA-864A-18ECC0EE17AE" name="Suma salario medio 6 meses" typeRef="number"/>
+  </dmn:inputData>
+  <dmn:decision id="_615A3578-74B0-4C6F-8856-9C49FBA72D00" name="Cliente activo o pasivo">
+    <dmn:extensionElements/>
+    <dmn:variable id="_01C8E7A2-5FB1-4108-9F74-9E16DD37A44C" name="Cliente activo o pasivo" typeRef="string"/>
+    <dmn:informationRequirement id="_E077DA31-215A-4F71-9103-00CF678B7FCA">
+      <dmn:requiredInput href="#_6F3C74CD-FD17-41A6-95C5-0FF90B59E581"/>
+    </dmn:informationRequirement>
+    <dmn:literalExpression id="_8592F87D-7BC5-4752-909D-BC0B4702EED3">
+      <dmn:text>if Suma salario medio 6 meses > 0
+then 
+    "ACTIVO"
+else
+    "PASIVO"
+</dmn:text>
+    </dmn:literalExpression>
+  </dmn:decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <di:extension>
+        <kie:ComponentsWidthsExtension>
+          <kie:ComponentWidths dmnElementRef="_80474F6E-4EC0-453B-8DBA-22E0D2D64FF3">
+            <kie:width>50.0</kie:width>
+            <kie:width>170.0</kie:width>
+            <kie:width>158.0</kie:width>
+            <kie:width>211.0</kie:width>
+            <kie:width>123.0</kie:width>
+            <kie:width>192.0</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_8592F87D-7BC5-4752-909D-BC0B4702EED3">
+            <kie:width>300.0</kie:width>
+          </kie:ComponentWidths>
+        </kie:ComponentsWidthsExtension>
+      </di:extension>
+      <dmndi:DMNShape id="dmnshape-_0E807FD2-1F95-4B0E-9C60-F55E1A5ECDFA" dmnElementRef="_0E807FD2-1F95-4B0E-9C60-F55E1A5ECDFA" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="332" y="360" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_6496B8CA-314F-46FF-9BBF-3BEF2F8D6593" dmnElementRef="_6496B8CA-314F-46FF-9BBF-3BEF2F8D6593" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="483" y="360" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_B54D2669-AA14-4877-8263-A27539EB467B" dmnElementRef="_B54D2669-AA14-4877-8263-A27539EB467B" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="384" y="70" width="148" height="52"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_6F3C74CD-FD17-41A6-95C5-0FF90B59E581" dmnElementRef="_6F3C74CD-FD17-41A6-95C5-0FF90B59E581" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="634" y="360" width="127" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="dmnshape-_615A3578-74B0-4C6F-8856-9C49FBA72D00" dmnElementRef="_615A3578-74B0-4C6F-8856-9C49FBA72D00" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="648" y="192" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="dmnedge-_A6B7C4C8-119E-44A9-A1DB-68FAC99D230D" dmnElementRef="_A6B7C4C8-119E-44A9-A1DB-68FAC99D230D">
+        <di:waypoint x="432" y="385"/>
+        <di:waypoint x="384" y="96"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_F87363F6-F49C-4CF8-A551-2EE490DD5619" dmnElementRef="_F87363F6-F49C-4CF8-A551-2EE490DD5619">
+        <di:waypoint x="533" y="385"/>
+        <di:waypoint x="458" y="122"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_2C29BCF5-7E86-45E1-8386-F2DDBEC5A07F" dmnElementRef="_2C29BCF5-7E86-45E1-8386-F2DDBEC5A07F">
+        <di:waypoint x="698" y="217"/>
+        <di:waypoint x="458" y="122"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-_E077DA31-215A-4F71-9103-00CF678B7FCA" dmnElementRef="_E077DA31-215A-4F71-9103-00CF678B7FCA">
+        <di:waypoint x="761" y="385"/>
+        <di:waypoint x="648" y="217"/>
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</dmn:definitions>
